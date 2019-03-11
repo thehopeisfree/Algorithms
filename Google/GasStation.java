@@ -3,9 +3,10 @@ public class GasStation {
     int[] gas = new int[] {4, 5, 3, 1, 4};
     int[] cost = new int[] {5, 4, 3, 4, 2};
     
-    System.out.print(canCompleteCircuitBruteForce(gas, cost));
+    System.out.print(canCompleteCircuit2(gas, cost));
   }
 
+  // This solution just tries to verify the start point for every station, thus leads to O(n^2)
   public static int canCompleteCircuitBruteForce(int[] gas, int[] cost) {
     int length = gas.length;
     int[] remain = new int[length];
@@ -33,5 +34,20 @@ public class GasStation {
     }
 
     return -1;    
+  }
+
+  // This solution tries to skip the start point verification for the unnecessary station
+  public static int canCompleteCircuit2(int[] gas, int[] cost) {
+    int start = 0, left = 0, lack = 0;
+    for (int i = 0; i < gas.length; ++i) {
+      left += gas[i] - cost[i];
+      if (left < 0) {
+        start = i + 1;
+        lack += left;
+        left = 0;
+      }
+    }
+
+    return left + lack >= 0 ? start : -1;
   }
 }
