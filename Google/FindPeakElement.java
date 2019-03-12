@@ -1,3 +1,5 @@
+package Google;
+
 public class FindPeakElement {
   public static void main(String[] args) {
     int[] nums = new int[] {9, 2, 3, 1};
