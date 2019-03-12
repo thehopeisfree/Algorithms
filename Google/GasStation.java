@@ -1,3 +1,5 @@
+package Google;
+
 public class GasStation {
   public static void main(String[] args) {
     int[] gas = new int[] {4, 5, 3, 1, 4};
